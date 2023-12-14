@@ -16,7 +16,7 @@ public class PanelFondo extends JPanel {
         inicializarCamino();
     }
     private void inicializarCamino(){
-        tablero = new Casilla [20][12];
+        tablero = new Casilla [12][20];
         for (int i = 0; i <tablero.length; i++){ //¨Inicilizamos todas las casillas como noCamino
             for (int j = 0; j < tablero[i].length; j++){
                 tablero[i][j] = new Casilla();
