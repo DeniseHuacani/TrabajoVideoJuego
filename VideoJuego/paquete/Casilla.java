@@ -4,8 +4,8 @@ public class Casilla {
     private boolean perteneceCamino;
     private String contenido;
     private Color color;
-    Color colorArena = Color.YELLOW;
-    Color colorCamino = Color.BLUE;
+    Color colorArena = new Color(240, 230, 140);
+    Color colorCamino = new Color(65, 105, 225);
     
     public void setCamino(Boolean booleano){
         this.perteneceCamino = booleano;
