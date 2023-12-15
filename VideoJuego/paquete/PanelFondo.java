@@ -6,13 +6,12 @@ public class PanelFondo extends JPanel {
     protected int tamMax;
     protected int tamCasilla;
     protected Casilla[][] tablero;
-    Color colorArena = Color.YELLOW;
-    Color colorCamino = Color.BLUE;
     
     public PanelFondo(int tamMax,int cantidadCasillas){
         this.tamMax = tamMax;
         this.cantidadCasillas = cantidadCasillas;
         tamCasilla = tamMax/cantidadCasillas;
+        //añadir el titulo del juego arriba
         inicializarCamino();
     }
     private void inicializarCamino(){
@@ -25,7 +24,7 @@ public class PanelFondo extends JPanel {
             }
         } //Comenzamos definiendo camino, camino horizontal
         for (int i = 2; i <= 18; i++){
-            tablero[3][i].setCamino(true);//horizontal
+            tablero[1][i].setCamino(true);//horizontal
             if (i >= 7)
                 tablero[9][i].setCamino(true); //horizontal
             if( i >= 4)
@@ -42,7 +41,6 @@ public class PanelFondo extends JPanel {
                 tablero[i][2].setCamino(true); //vertical
             }
         } 
-        
     }
     public void paint (Graphics grafico){
         super.paint(grafico);

@@ -7,7 +7,7 @@ public class Juego extends JFrame{
         videoJuego.setLocation(300, 200);
         videoJuego.setSize(800, 700);
         videoJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        PanelFondo tablero = new PanelFondo(800, 30);
+        PanelFondo tablero = new PanelFondo(8000, 240);
         videoJuego.add(tablero);
 
         videoJuego.setVisible(true);
