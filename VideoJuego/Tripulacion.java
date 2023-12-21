@@ -12,7 +12,7 @@ public class Tripulacion {
     
     public Tripulacion(String capitan) {
         tripulacion = new ArrayList<Piratas>();
-        tripulacion.add(new Capitan(capitan,100,true));
+        tripulacion.add(new Capitan(capitan,100,true)); //añadimos a ti, capitan
         reclutarPiratas();
     }
     private void reclutarPiratas() {
@@ -23,7 +23,6 @@ public class Tripulacion {
 
         while (tripulacion.size() < cantidadPiratas) {
             int tipoPirata = rand.nextInt(4); // 0: Espadachin, 1: Barbaro, 2: Marino, 3: Artillero
-
             switch (tipoPirata) {
                 case 0:
                     tripulacion.add(crearPirataAleatorio(espadachines, "Espadachin"));

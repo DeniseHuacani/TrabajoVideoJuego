@@ -6,13 +6,22 @@ public class PanelFondo extends JPanel {
     protected int tamMax;
     protected int tamCasilla;
     protected Casilla[][] tablero;
+    private Image fondo;
     
     public PanelFondo(int tamMax,int cantidadCasillas){
         this.tamMax = tamMax;
         this.cantidadCasillas = cantidadCasillas;
         tamCasilla = tamMax/cantidadCasillas;
-        //añadir el titulo del juego arriba
+        cargarImagenDeFondo();
         inicializarCamino();
+    }
+    private void cargarImagenDeFondo() {
+        try {
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/imagenes/fondo3.jpeg?raw=true";
+            fondo = new ImageIcon(new URL(urlImagen)).getImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     private void inicializarCamino(){
         tablero = new Casilla [12][20];
@@ -44,12 +53,13 @@ public class PanelFondo extends JPanel {
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
+        grafico.drawImage(imagenDeFondo, 0, 0, getWidth(), getHeight(), this);
         for (int i = 0; i <tablero.length; i++){
             for (int j = 0; j < tablero[i].length; j++){
                 Casilla cActual = tablero[i][j];
                 Color colorCasilla = cActual.getColor();
                 grafico.setColor(colorCasilla);
-                grafico.fillRect(i*tamCasilla, j*tamCasilla,tamCasilla-1,tamCasilla-1);
+                grafico.fillRect(j*tamCasilla, i*tamCasilla,tamCasilla-1,tamCasilla-1);
             }
         }
     }
