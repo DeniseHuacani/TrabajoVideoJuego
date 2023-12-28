@@ -8,6 +8,7 @@ package trabajofinal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Bienvenidos extends JFrame{
     private static final int ANCHO =600;
@@ -15,6 +16,7 @@ public class Bienvenidos extends JFrame{
    
     private JLabel saludo;
     private JButton botinicio;
+    private Image fondo;
     
     public Bienvenidos(){
         setTitle("VIDEOJUEGO!!");
@@ -22,7 +24,9 @@ public class Bienvenidos extends JFrame{
         setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null); //para que aparezca en el centro
+        
         createContents();
+        //cargarImagenDeFondo();
         setVisible(true);
     }
     private void createContents() {
@@ -40,6 +44,14 @@ public class Bienvenidos extends JFrame{
         
         
     }
+    private void cargarImagenDeFondo() {
+        try {
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/imagenes/fondo3.jpeg?raw=true";
+            fondo = new ImageIcon(new URL(urlImagen)).getImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private class Listener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             if(e.getSource()==botinicio){
@@ -52,5 +64,10 @@ public class Bienvenidos extends JFrame{
     }
     public static void main (String[] args){
             new Bienvenidos();
+    }
+     public void paint (Graphics grafico){
+        super.paint(grafico);
+        grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+        
     }
 }
