@@ -3,13 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package trabajofinal;
-
-public class juego {
+import java.awt.*;
+import javax.swing.*;
+public class Juego extends JFrame{
+    
     public static void main(String[] args){
-        Tripulacion barco1= new Tripulacion("Capitan Barbosa");
-        System.out.println(barco1.getCantidadPiratas());
-        Tripulacion barco2= new Tripulacion("Capitan Garfio");
-        barco1.mostrarTodos();
-        
+        Juego videoJuego = new Juego();
+        videoJuego.setLocation(300, 200);
+        videoJuego.setSize(1000, 700);
+        videoJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PanelFondo tablero = new PanelFondo(8000, 240);
+        videoJuego.add(tablero);
+
+        videoJuego.setVisible(true);
     }
 }
