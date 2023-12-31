@@ -9,8 +9,8 @@ import java.awt.event.*;
 import java.net.URL;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Menu extends JFrame{
-    private static final int ANCHO =500;
-    private static final int ALTO=650;
+    private static final int ANCHO =700;
+    private static final int ALTO=760;
    
     private Image logoJuego;
     private JButton jugarButton; //opcion1, menu principal
@@ -26,10 +26,11 @@ public class Menu extends JFrame{
         setLocationRelativeTo(null); //para que aparezca en el centro
         
         createContents();
-        cargarImagenDeFondo();
         setVisible(true);
     }
     private void createContents() {
+        cargarImagenDeFondo();
+        cargarImagenLogo();
         jugarButton= new JButton("INICIAR");
         add(jugarButton);
         jugarButton.addActionListener(new Listener());
@@ -40,6 +41,14 @@ public class Menu extends JFrame{
         try {
             String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/FondoMenu.png?raw=true";
             fondo = new ImageIcon(new URL(urlImagen)).getImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void cargarImagenLogo() {
+        try {
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/logo.png?raw=true";
+            logoJuego = new ImageIcon(new URL(urlImagen)).getImage();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,6 +69,6 @@ public class Menu extends JFrame{
      public void paint (Graphics grafico){
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
-        
+        grafico.drawImage(logoJuego,100,0,this);
     }
 }
