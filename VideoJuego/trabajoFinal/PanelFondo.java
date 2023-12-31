@@ -33,7 +33,7 @@ public class PanelFondo extends JPanel {
     }
     private void cargarImagenDeFondo() {
         try {
-            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondo.png?raw=true";
+            String urlImagen = "https://raw.githubusercontent.com/DeniseHuacani/TrabajoVideoJuego/7bacbe72eb007848e1bd5811883ad24c20ac326c/VideoJuego/imagenes/fondo.png";
             fondo = new ImageIcon(new URL(urlImagen)).getImage();
         } catch (Exception e) {
             e.printStackTrace();
