@@ -1,4 +1,4 @@
-package paquete;
+package trabajoFinal;
 import javax.swing.JPanel;
 public class DadoPanel extends JPanel {
     private int numActual;
