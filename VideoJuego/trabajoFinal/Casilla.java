@@ -13,7 +13,7 @@ public class Casilla {
     private int posicion;
     
     Color colorMar = new Color(0, 0, 255, 0); 
-    Color colorCamino = new Color(229, 231, 233,200); //mar
+    Color colorCamino = new Color(229, 231, 233,200); 
     
     public void setCamino(Boolean booleano){
         this.perteneceCamino = booleano;

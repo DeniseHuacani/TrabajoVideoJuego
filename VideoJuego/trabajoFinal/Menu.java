@@ -8,43 +8,37 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-public class Bienvenidos extends JFrame{
-    private static final int ANCHO =600;
-    private static final int ALTO=150;
+public class Menu extends JFrame{
+    private static final int ANCHO =500;
+    private static final int ALTO=650;
    
-    private JLabel saludo;
-    private JButton botinicio;
+    private Image logoJuego;
+    private JButton jugarButton; //opcion1, menu principal
+    private JButton comoJugarButton; //opcion2, menu principal
+    private JButton historiaButton;//opcion3, menu principal
     private Image fondo;
     
-    public Bienvenidos(){
-        setTitle("VIDEOJUEGO!!");
-        setSize(540,150);
+    public Menu(){
+        setTitle("THE LAST SHINE VIDEOGAME: MENU");
+        setSize(ANCHO,ALTO);
         setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null); //para que aparezca en el centro
         
         createContents();
-        //cargarImagenDeFondo();
+        cargarImagenDeFondo();
         setVisible(true);
     }
     private void createContents() {
-        saludo = new JLabel("¡Bienvenido a la aventura,\n jugador intrépido! ");
-        JLabel intro = new JLabel(" ¿Estás listo para sumergirte en un mundo lleno de desafíos, emociones y misterios?");
-        Font font = new Font("Times New Roman", Font.PLAIN, 30);
-        saludo.setFont(font);
-        botinicio= new JButton("INICIAR");
-        
-        
-        add(saludo);
-        add(intro);
-        add(botinicio);
-        botinicio.addActionListener(new Listener());
+        jugarButton= new JButton("INICIAR");
+        add(jugarButton);
+        jugarButton.addActionListener(new Listener());
         
         
     }
     private void cargarImagenDeFondo() {
         try {
-            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondo.png?raw=true";
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/FondoMenu.png?raw=true";
             fondo = new ImageIcon(new URL(urlImagen)).getImage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +46,7 @@ public class Bienvenidos extends JFrame{
     }
     private class Listener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(e.getSource()==botinicio){
+            if(e.getSource()==jugarButton){
                 dispose(); //para que se cierre la ventana
                 
                 new SegundaVentana();
@@ -61,7 +55,7 @@ public class Bienvenidos extends JFrame{
         }
     }
     public static void main (String[] args){
-            new Bienvenidos();
+            new Menu();
     }
      public void paint (Graphics grafico){
         super.paint(grafico);

@@ -18,7 +18,7 @@ public class PanelFondo extends JPanel {
     protected Casilla[][] tablero;
     private Image fondo;
     private JButton btnActualizar;
-    private int turno =1;
+    private int turno = 1;
     
     private int numerodado=0;
     private int numerodado2=0;
@@ -33,7 +33,7 @@ public class PanelFondo extends JPanel {
     }
     private void cargarImagenDeFondo() {
         try {
-            String urlImagen = "https://raw.githubusercontent.com/DeniseHuacani/TrabajoVideoJuego/7bacbe72eb007848e1bd5811883ad24c20ac326c/VideoJuego/imagenes/fondo.png";
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondo.png?raw=true";
             fondo = new ImageIcon(new URL(urlImagen)).getImage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,7 +95,6 @@ public class PanelFondo extends JPanel {
         } //Comenzamos definiendo camino, camino horizontal
         for (int i = 2; i <= 28; i++){
             tablero[1][i].setCamino(true);//horizontal
-            
             tablero[2][i].setCamino(true);//horizontal
             tablero[1][i].setPosicion(i-1);//1,2,3...,27
             tablero[2][i].setPosicion(i-1);//1,2,3...,27
@@ -109,7 +108,7 @@ public class PanelFondo extends JPanel {
                 tablero[15][i].setCamino(true); //horizontal
                 tablero[14][i].setCamino(true); //horizontal
             }
-            if (i >= 3 &&i<=24){
+            if (i >= 4 &&i<=24){ //Se hizo el camino un poco mas corto: fabiana 3 a 4
                 tablero[10][i].setCamino(true); //horizontal
                 tablero[11][i].setCamino(true); //horizontal
             }  
@@ -135,7 +134,6 @@ public class PanelFondo extends JPanel {
             }
         } 
     }
-    
     
     public void paint (Graphics grafico){
         super.paint(grafico);
