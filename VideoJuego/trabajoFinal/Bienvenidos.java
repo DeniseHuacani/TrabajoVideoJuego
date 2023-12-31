@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package trabajofinal;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
