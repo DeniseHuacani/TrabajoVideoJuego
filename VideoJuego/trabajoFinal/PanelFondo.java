@@ -42,8 +42,8 @@ public class PanelFondo extends JPanel {
     private void inicializarBotonActualizar() {
         Random rand = new Random();
         btnActualizar = new JButton("TURNO : JUGADOR 1");
+        
         btnActualizar.addActionListener(new ActionListener() {
-            
             public void actionPerformed(ActionEvent e) {
                 if(turno%2==0){
                     btnActualizar.setText("TURNO : JUGADOR 1");
@@ -114,9 +114,7 @@ public class PanelFondo extends JPanel {
             }  
         }
         for (int i = 2; i <= 19; i++){
-            
-                
-            if (i >= 3 && i <=18){
+                if (i >= 3 && i <=18){
                 tablero[i][28].setCamino(true); // vertical
                 tablero[i][27].setCamino(true); // vertical
                 tablero[i][28].setPosicion(25+i);//28,29,...41,42,43

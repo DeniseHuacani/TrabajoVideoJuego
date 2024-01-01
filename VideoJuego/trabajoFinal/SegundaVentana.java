@@ -6,7 +6,6 @@ import java.net.URL;
 import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
-        
     private JButton empezarButton;
     
     public SegundaVentana() {
@@ -24,17 +23,22 @@ public class SegundaVentana extends JFrame {
         setVisible(true);
     }
     public void createContents(){
+        
+        JComboBox iconsList = new JComboBox<>();
         empezarButton = new JButton("Empezar");
-        empezarButton.addActionListener(new Listener());
         add(empezarButton);
+        empezarButton.addActionListener(new Listener());
+        
 
+    }
+    private void añadirImagen(){
+        
     }
 
     private class Listener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(e.getSource()==empezarButton){
+            if(e.getSource() == empezarButton){
                 dispose(); //para que se cierre la ventana
-                
                 Juego.main(new String[]{});
             }
             
