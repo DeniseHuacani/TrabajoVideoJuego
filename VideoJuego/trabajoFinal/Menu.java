@@ -7,8 +7,6 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Menu extends JFrame{
     private static final int ANCHO = 700;
     private static final int ALTO = 760;
-    private static final int ANCHO_BOTON = 240;
-    private static final int LARGO_BOTON = 70;
     private Image logoJuego;
     private JButton jugarButton; //opcion1, menu principal
     private JButton comoJugarButton; //opcion2, menu principal
@@ -29,20 +27,25 @@ public class Menu extends JFrame{
         cargarImagenDeFondo();
         cargarImagenLogo(); //Titulo logo del juego
         //cargando opciones: botones en el menu
-        jugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu.png?raw=true"));
-        
+        jugarButton = new JButton();
+        configurarBoton(jugarButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu.png?raw=true");
         add(jugarButton);
-        jugarButton.addActionListener(new Listener());
-        comoJugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu%20(2).png?raw=true"));
-        
+        jugarButton.addActionListener(new ListenerJugar());
+        comoJugarButton = new JButton(); 
+        configurarBoton(comoJugarButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(2).png?raw=true");
         add(comoJugarButton);
-        comoJugarButton.addActionListener(new Listener());
-        historiaButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu%20(3).png?raw=true"));
-        
+        comoJugarButton.addActionListener(new ListenerComoJugar());
+        historiaButton = new JButton();
+        configurarBoton(historiaButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true");
         add(historiaButton);
-        historiaButton.addActionListener(new Listener());
-        
-        
+        historiaButton.addActionListener(new ListenerHistoria()); 
+    }
+    private void configurarBoton(JButton unBoton,String url){
+        unBoton.setOpaque(false); //Lo vuelve transparente antes de agregar la imgen
+        unBoton.setContentAreaFilled(false); // Establece el fondo del botón como transparente
+        unBoton.setBorderPainted(false); // Elimina el borde del botón
+        unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
+        unBoton.setIcon(cargarIcon(url));
     }
     private ImageIcon cargarIcon(String url) {
         try {
@@ -69,14 +72,28 @@ public class Menu extends JFrame{
             e.printStackTrace();
         }
     }
-    private class Listener implements ActionListener{
+    private class ListenerJugar implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(e.getSource()==jugarButton){
+            if(e.getSource() == jugarButton){
                 dispose(); //para que se cierre la ventana
-                
                 new SegundaVentana();
             }
-            
+        }
+    }
+    private class ListenerHistoria implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource() == historiaButton){
+                dispose(); //para que se cierre la ventana
+                new HistoriaVentana();
+            } 
+        }
+    }
+    private class ListenerComoJugar implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource() == comoJugarButton){
+                dispose(); //para que se cierre la ventana
+                new SegundaVentana();
+            }
         }
     }
     public static void main (String[] args){
