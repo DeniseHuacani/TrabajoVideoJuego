@@ -29,7 +29,7 @@ public class Menu extends JFrame{
         cargarImagenDeFondo();
         cargarImagenLogo(); //Titulo logo del juego
         //cargando opciones: botones en el menu
-        jugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu.png?raw=true"));
+        jugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu.png?raw=true"));
         
         add(jugarButton);
         jugarButton.addActionListener(new Listener());
