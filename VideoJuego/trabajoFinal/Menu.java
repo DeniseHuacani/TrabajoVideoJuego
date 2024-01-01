@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package trabajofinal;
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +5,10 @@ import java.awt.event.*;
 import java.net.URL;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Menu extends JFrame{
-    private static final int ANCHO =700;
-    private static final int ALTO=760;
-   
+    private static final int ANCHO = 700;
+    private static final int ALTO = 760;
+    private static final int ANCHO_BOTON = 240;
+    private static final int LARGO_BOTON = 70;
     private Image logoJuego;
     private JButton jugarButton; //opcion1, menu principal
     private JButton comoJugarButton; //opcion2, menu principal
@@ -30,12 +27,31 @@ public class Menu extends JFrame{
     }
     private void createContents() {
         cargarImagenDeFondo();
-        cargarImagenLogo();
-        jugarButton= new JButton("INICIAR");
+        cargarImagenLogo(); //Titulo logo del juego
+        //cargando opciones: botones en el menu
+        jugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu.png?raw=true"));
+        
         add(jugarButton);
         jugarButton.addActionListener(new Listener());
+        comoJugarButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu%20(2).png?raw=true"));
+        
+        add(comoJugarButton);
+        comoJugarButton.addActionListener(new Listener());
+        historiaButton = new JButton(cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionMenu%20(3).png?raw=true"));
+        
+        add(historiaButton);
+        historiaButton.addActionListener(new Listener());
         
         
+    }
+    private ImageIcon cargarIcon(String url) {
+        try {
+            Image imagen = new ImageIcon(new URL(url)).getImage();
+            return new ImageIcon(imagen);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     private void cargarImagenDeFondo() {
         try {
