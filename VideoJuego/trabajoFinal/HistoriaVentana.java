@@ -22,7 +22,7 @@ public class HistoriaVentana extends JFrame{
     }
     private void createContents(){
         cargarImagenes();
-
+        regresarButton = new JButton();
     }
     private void cargarImagenes(){
         cargarImagenDeFondo();
@@ -57,5 +57,6 @@ public class HistoriaVentana extends JFrame{
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
         grafico.drawImage(logoJuego,100,0,this);
+        grafico.drawImage(historia,100,0,this);
     }
 }

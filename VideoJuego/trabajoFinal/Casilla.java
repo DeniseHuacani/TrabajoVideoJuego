@@ -1,15 +1,25 @@
 package trabajofinal;
+
 import java.awt.*;
-import javax.swing.*;
 public class Casilla {
     private boolean perteneceCamino;
-    private ImageIcon iconJugador;
-    private Color color; //Temporal, se borrara luego cuando termine con icon
+    private Color color;
+    
     private int numerobarco;
     private int posicion;
     
+    Color colorMar = new Color(0, 0, 255, 0); 
+    Color colorCamino = new Color(229, 231, 233,200); 
+    
     public void setCamino(Boolean booleano){
-        this.perteneceCamino = booleano;         
+        this.perteneceCamino = booleano;
+        
+        if (booleano)
+            color = colorCamino;
+        else{
+            color = colorMar;
+        } 
+            
     }
     public boolean getPerteneceCamino(){
         return perteneceCamino;
@@ -17,7 +27,6 @@ public class Casilla {
     public Color getColor(){
         return color;
     }
-    
     public void setColor(Color nuevoColor) {
         color = nuevoColor;
     }
