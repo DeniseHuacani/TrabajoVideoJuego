@@ -47,7 +47,7 @@ public class Menu extends JFrame{
         unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
         unBoton.setIcon(cargarIcon(url));
     }
-    private ImageIcon cargarIcon(String url) {
+    private ImageIcon cargarIcon(String url) { //Metodo que carga las imagenes buttons
         try {
             Image imagen = new ImageIcon(new URL(url)).getImage();
             return new ImageIcon(imagen);
@@ -99,7 +99,7 @@ public class Menu extends JFrame{
     public static void main (String[] args){
             new Menu();
     }
-     public void paint (Graphics grafico){
+    public void paint (Graphics grafico){
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
         grafico.drawImage(logoJuego,100,0,this);

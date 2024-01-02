@@ -3,36 +3,45 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
     private JButton empezarButton;
-    
+    private Image fondo;
+    private JComboBox<ImageIcon> iconsList;
+    private ArrayList<ImageIcon> iconosDisponibles;
+
     public SegundaVentana() {
-        setTitle("Información de Jugadores");
-        setSize(600, 400);
+        setTitle("THE LAST SHINE CHANCE: Personalizacion de Jugadores");
+        setSize(700, 760);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
         createContents();
         setVisible(true);
-    
-        agregarJugador("Jugador 1", "https://raw.githubusercontent.com/DeniseHuacani/TrabajoVideoJuego/main/imagenes/fondo4.png");
-        agregarJugador("Jugador 2", "https://raw.githubusercontent.com/DeniseHuacani/TrabajoVideoJuego/main/imagenes/fondo5.png");
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
     public void createContents(){
-        
+        cargarImagenDeFondo();
+        iconosDisponibles = cargarIconos();
         JComboBox iconsList = new JComboBox<>();
         empezarButton = new JButton("Empezar");
         add(empezarButton);
         empezarButton.addActionListener(new Listener());
-        
-
     }
-    private void añadirImagen(){
-        
+    private void cargarImagenDeFondo() {
+        try {
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/FondoMenu.png?raw=true";
+            fondo = new ImageIcon(new URL(urlImagen)).getImage();
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private ArrayList<ImageIcon> cargarIconos(){
+        ArrayList<ImageIcon> iconos = new ArrayList<ImageIcon>();
+        iconos.add();
+        return 
     }
 
     private class Listener implements ActionListener{
@@ -45,26 +54,9 @@ public class SegundaVentana extends JFrame {
         }
     }
 
-    private void agregarJugador(String nombre, String urlImagen) {
-        JPanel panelJugador = new JPanel();
-        panelJugador.setLayout(new GridLayout(0,1,10,45));
-
-        JLabel labelNombre = new JLabel(nombre);
-        JLabel labelImagen = new JLabel();
-
-        try {
-            ImageIcon imageIcon = new ImageIcon(new URL(urlImagen));
-            Image image = imageIcon.getImage();
-            Image nuevaImagen = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Ajusta el tamaño según sea necesario
-            labelImagen.setIcon(new ImageIcon(nuevaImagen));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        panelJugador.add(labelNombre);
-        panelJugador.add(labelImagen);
-
-        add(panelJugador);
+    public void paint (Graphics grafico){
+        super.paint(grafico);
+        grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
     }
     public static void main (String[] args){
             new SegundaVentana();

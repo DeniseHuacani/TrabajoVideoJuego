@@ -1,29 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package trabajofinal;
-
 import java.awt.*;
+import javax.swing.*;
 public class Casilla {
     private boolean perteneceCamino;
-    private Color color;
-    
+    private ImageIcon iconJugador;
+    private Color color; //Temporal, se borrara luego cuando termine con icon
     private int numerobarco;
     private int posicion;
     
-    Color colorMar = new Color(0, 0, 255, 0); 
-    Color colorCamino = new Color(229, 231, 233,200); 
-    
     public void setCamino(Boolean booleano){
-        this.perteneceCamino = booleano;
-        
-        if (booleano)
-            color = colorCamino;
-        else{
-            color = colorMar;
-        } 
-            
+        this.perteneceCamino = booleano;         
     }
     public boolean getPerteneceCamino(){
         return perteneceCamino;
@@ -31,6 +17,7 @@ public class Casilla {
     public Color getColor(){
         return color;
     }
+    
     public void setColor(Color nuevoColor) {
         color = nuevoColor;
     }
