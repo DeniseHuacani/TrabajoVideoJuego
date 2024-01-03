@@ -16,10 +16,9 @@ public class Menu extends JFrame{
     public Menu(){
         setTitle("THE LAST SHINE VIDEOGAME: MENU");
         setSize(ANCHO,ALTO);
-        setLayout(new FlowLayout());
+        setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null); //para que aparezca en el centro
-        
         createContents();
         setVisible(true);
     }
@@ -29,14 +28,17 @@ public class Menu extends JFrame{
         //cargando opciones: botones en el menu
         jugarButton = new JButton();
         configurarBoton(jugarButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu.png?raw=true");
+        jugarButton.setBounds(245,355,190,80);
         add(jugarButton);
         jugarButton.addActionListener(new ListenerJugar());
         comoJugarButton = new JButton(); 
         configurarBoton(comoJugarButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(2).png?raw=true");
+        comoJugarButton.setBounds(245,440,190,80);
         add(comoJugarButton);
         comoJugarButton.addActionListener(new ListenerComoJugar());
         historiaButton = new JButton();
         configurarBoton(historiaButton,"https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true");
+        historiaButton.setBounds(245,525,190,80);
         add(historiaButton);
         historiaButton.addActionListener(new ListenerHistoria()); 
     }
@@ -45,6 +47,7 @@ public class Menu extends JFrame{
         unBoton.setContentAreaFilled(false); // Establece el fondo del botón como transparente
         unBoton.setBorderPainted(false); // Elimina el borde del botón
         unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
+        unBoton.setBackground(new Color(0, 0, 0, 0));
         unBoton.setIcon(cargarIcon(url));
     }
     private ImageIcon cargarIcon(String url) { //Metodo que carga las imagenes buttons
