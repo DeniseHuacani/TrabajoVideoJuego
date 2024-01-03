@@ -88,12 +88,9 @@ public class PanelFondo extends JPanel {
                 cActual.setCamino(false);
             }
         } //Comenzamos definiendo camino, camino horizontal
-        int m =0;
+        
         int n =0;
         int p =0;
-        int q =0;
-        int r =0;
-        int s =0;
         int b =0;
         for (int i = 2; i <= 28; i++){
             if(i<28){
@@ -105,13 +102,13 @@ public class PanelFondo extends JPanel {
                 tablero[2][i].setNumerobarco(2);
             }
             
-            if (i >= 3 && i <=18){
+            if (i >= 3 && i <=16){
                 tablero[i][28].setCamino(true); // vertical
                 tablero[i][28].setNumerobarco(1);
-                tablero[i][28].setPosicion(24+i);//27,29,...42
+                tablero[i][28].setPosicion(24+i);//27,29,...40
                 if (i <=17){
                     tablero[i][27].setCamino(true); // vertical
-                    tablero[i][27].setPosicion(24+i);//27,29,...41
+                    tablero[i][27].setPosicion(24+i);//27,29,...40
                     tablero[i][27].setNumerobarco(2);
                 }
 
@@ -120,29 +117,29 @@ public class PanelFondo extends JPanel {
             if (i >= 7 && i <=27){
                 
                 
-                if(i <=26){
-                    tablero[17][i].setCamino(true); //horizontal
-                    tablero[17][i].setNumerobarco(2);
-                    tablero[17][i].setPosicion(i+54-2*m);//61..42
-                    m++;
-                }
+                tablero[17][i].setCamino(true); //horizontal
+                tablero[17][i].setNumerobarco(2);
+                tablero[17][i].setPosicion(i+54-2*n);//61..42
                 
                 tablero[18][i].setCamino(true);//horizontal
                 tablero[18][i].setNumerobarco(1);
-                tablero[18][i].setPosicion(i+56-2*n);//63...44
+                tablero[18][i].setPosicion(i+54-2*n);//61...42
                 n++;
             }
             if (i >= 14 && i <= 18){
-                tablero[i][6].setCamino(true); //vertical
-                tablero[i][6].setNumerobarco(1);
-                tablero[i][6].setPosicion(i+54-2*r);//68...64
-                if( i>=15 && i<=16){
+                if( i==16){
+                    tablero[i][6].setCamino(true); //vertical
+                    tablero[i][6].setNumerobarco(1);
+                    tablero[i][6].setPosicion(62);//62
+                
                     tablero[i][7].setCamino(true); //vertical
                     tablero[i][7].setNumerobarco(2);
-                    tablero[i][7].setPosicion(i+47-2*s);//63...62
-                    s++;
+                    tablero[i][7].setPosicion(62);//62
+                   
                 }
-                r++;
+                else{
+                    tablero[i][6].setCaminoNoValido(); //vertical
+                }
             }
             
             
@@ -151,37 +148,39 @@ public class PanelFondo extends JPanel {
                 
                 tablero[14][i].setCamino(true); //horizontal
                 tablero[14][i].setNumerobarco(1);
-                tablero[14][i].setPosicion(i+62);//69...85
+                tablero[14][i].setPosicion(i+56);//63...79
                 
-                if(i>=8){
-                    tablero[15][i].setCamino(true); //horizontal
-                    tablero[15][i].setNumerobarco(2);
-                    tablero[15][i].setPosicion(56+i);//64...79
-                }
+                tablero[15][i].setCamino(true); //horizontal
+                tablero[15][i].setNumerobarco(2);
+                tablero[15][i].setPosicion(56+i);//63...79
                 
             }
-            if (i >= 4 &&i<=23){ //Se hizo el camino un poco mas largo: fabiana 3 a 4
+            if (i >= 5 &&i<=23){ //
                 tablero[10][i].setCamino(true); //horizontal
                 tablero[10][i].setNumerobarco(2);
-                tablero[10][i].setPosicion(i+101-2*(b));//105 ...86
+                tablero[10][i].setPosicion(i+95-2*(b));//100..82
                 tablero[11][i].setCamino(true); //horizontal
                 tablero[11][i].setNumerobarco(1);
-                tablero[11][i].setPosicion(i+103-2*(b));//107 ..88
+                tablero[11][i].setPosicion(i+95-2*(b));//100..82
                 b++;
             }
             
             if (i >= 10 && i <=15){
-                tablero[i][24].setCamino(true); // vertical
-                tablero[i][24].setNumerobarco(2);
-                tablero[i][24].setPosicion(i+75-2*(p));//85 ...80
+                
+                
                 if (i >= 12 && i <=13){
+                    tablero[i][24].setCamino(true); // vertical
+                    tablero[i][24].setNumerobarco(2);
+                    tablero[i][24].setPosicion(i+69-2*(p));//81 ..80
+                
                     tablero[i][23].setCamino(true); // vertical
                     tablero[i][23].setNumerobarco(1);
-                    tablero[i][23].setPosicion(i+75-2*(q));//87...86
-                    q++;
+                    tablero[i][23].setPosicion(i+69-2*(p));//81 ..80
+                    p++;
+                }else{
+                    tablero[i][24].setCaminoNoValido(); // vertical
                 }
                 
-                p++;
             }
             
         }
