@@ -37,20 +37,24 @@ public class PanelFondo extends JPanel {
     private void inicializarBotonActualizar() {
         Random rand = new Random();
         btnActualizar = new JButton("TURNO : JUGADOR 1");
-        
         btnActualizar.addActionListener(new ActionListener() {
+            
             public void actionPerformed(ActionEvent e) {
                 if(turno%2==0){
                     btnActualizar.setText("TURNO : JUGADOR 1");
+                    borrarCasillaPintada(numerodado,2);
                     numerodado += rand.nextInt(5)+5;
                     pintarPosicion(numerodado,2);
-                    repaint(); // Esto llamará al método paint nuevamente
+                    System.out.println("Jugador 2 : "+numerodado);
+                    //repaint(); // Esto llamará al método paint nuevamente// no es necesario , ya lo probe y funciona igual
                 }
                 else{
                     btnActualizar.setText("TURNO : JUGADOR 2");
+                    borrarCasillaPintada(numerodado2,1);
                     numerodado2 += rand.nextInt(5)+5;
                     pintarPosicion(numerodado2,1);
-                    repaint(); // Esto llamará al método paint nuevamente
+                    System.out.println("Jugador 1 : "+numerodado2);
+                    //repaint(); // Esto llamará al método paint nuevamente
                 }
                 if(numerodado==numerodado2){
                     
@@ -61,6 +65,18 @@ public class PanelFondo extends JPanel {
         });
 
         add(btnActualizar, BorderLayout.SOUTH);
+    }
+    public void borrarCasillaPintada(int posicion,int numero) {
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                Casilla cActual = tablero[i][j];
+                if (cActual.getPosicion() == posicion && cActual.getNumerobarco() == numero) {
+                    // Restablecer el color a null para borrar la pintura
+                    cActual.setColor(new Color(229, 231, 233,200));
+                }
+            }
+        }
+        repaint();
     }
     public void pintarPosicion(int n,int numeroBarco) {
         for (int i = 0; i < tablero.length; i++) {
