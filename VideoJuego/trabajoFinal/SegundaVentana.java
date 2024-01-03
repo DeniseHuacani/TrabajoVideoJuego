@@ -30,10 +30,12 @@ public class SegundaVentana extends JFrame {
         iconsList1.setPreferredSize(new Dimension(110, 100));
         add(iconsList1);
         iconsList1.addItemListener(new ListenerDespegable());
+        
         iconsList2 = new JComboBox<>(iconsArr2.toArray(new ImageIcon[0]));
         iconsList2.setPreferredSize(new Dimension(110, 100));
         add(iconsList2);
-        iconsList1.addItemListener(new ListenerDespegable());
+        iconsList2.addItemListener(new ListenerDespegable()); //de iconList1 a iconList2
+        
         empezarButton = new JButton("Empezar");
         empezarButton.setBounds(100,100,100,100);
         add(empezarButton);
@@ -89,7 +91,7 @@ public class SegundaVentana extends JFrame {
     }
     private class ListenerDespegable implements ItemListener {
         public void itemStateChanged(ItemEvent e) {
-            while (e.getStateChange() == ItemEvent.SELECTED) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {    //de while a if
                 repaint();
             }
         }
