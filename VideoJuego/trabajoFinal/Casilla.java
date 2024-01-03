@@ -10,6 +10,7 @@ public class Casilla {
     
     Color colorMar = new Color(0, 0, 255, 0); 
     Color colorCamino = new Color(229, 231, 233,200); 
+    Color colorCamNoValido = new Color(185, 185, 185,200); 
     
     public void setCamino(Boolean booleano){
         this.perteneceCamino = booleano;
@@ -20,6 +21,9 @@ public class Casilla {
             color = colorMar;
         } 
             
+    }
+    public void setCaminoNoValido(){
+        color = colorCamNoValido;
     }
     public boolean getPerteneceCamino(){
         return perteneceCamino;
