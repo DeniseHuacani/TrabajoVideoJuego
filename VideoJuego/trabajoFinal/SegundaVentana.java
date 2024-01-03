@@ -1,7 +1,6 @@
 package trabajofinal;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.awt.event.*;
@@ -10,7 +9,7 @@ public class SegundaVentana extends JFrame {
     private JButton empezarButton;
     private final Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
     private final Image logoJuego = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/logo.png?raw=true");;
-    private final Image imgJLabel = cargarImagen("");;
+    private final Image imgJLabel = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/segundaVentana.png?raw=true");;
     private JComboBox<ImageIcon> iconsList1;
     private JComboBox<ImageIcon> iconsList2;
     private ArrayList<ImageIcon> iconsArr1;
@@ -99,6 +98,7 @@ public class SegundaVentana extends JFrame {
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
         grafico.drawImage(logoJuego,100,0,this);
+        grafico.drawImage(imgJLabel,100,0,this);
     }
     public static void main (String[] args){
             new SegundaVentana();
