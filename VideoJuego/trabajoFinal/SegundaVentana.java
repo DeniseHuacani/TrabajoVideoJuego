@@ -8,7 +8,9 @@ import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
     private JButton empezarButton;
-    private Image fondo;
+    private final Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
+    private final Image logoJuego = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/logo.png?raw=true");;
+    private final Image imgJLabel = cargarImagen("");;
     private JComboBox<ImageIcon> iconsList1;
     private JComboBox<ImageIcon> iconsList2;
     private ArrayList<ImageIcon> iconsArr1;
@@ -39,7 +41,6 @@ public class SegundaVentana extends JFrame {
         empezarButton.addActionListener(new Listener());
     }
     private void cargarImagenes(){
-        cargarImagenDeFondo();
         ImageIcon icon11 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador1/Icono1.1.png?raw=true");
         ImageIcon icon12 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador1/icono1.2.png?raw=true");
         ImageIcon icon13 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador1/icono1.3.png?raw=true");
@@ -51,14 +52,14 @@ public class SegundaVentana extends JFrame {
         ImageIcon icon24 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador2/icono2.4.png?raw=true");
         iconsArr2 = cargarIconsArr(icon21,icon22,icon23,icon24);
     }
-    private void cargarImagenDeFondo() {
+    private Image cargarImagen(String url) {
         try {
-            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true";
-            fondo = new ImageIcon(new URL(urlImagen)).getImage();
-        } 
-        catch (Exception e) {
+            Image img = new ImageIcon(new URL(url)).getImage();
+            return img;
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
     private ImageIcon cargarIcon(String urlImagen) {
         try {
@@ -94,10 +95,10 @@ public class SegundaVentana extends JFrame {
             }
         }
     }
-
     public void paint (Graphics grafico){
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+        grafico.drawImage(logoJuego,100,0,this);
     }
     public static void main (String[] args){
             new SegundaVentana();
