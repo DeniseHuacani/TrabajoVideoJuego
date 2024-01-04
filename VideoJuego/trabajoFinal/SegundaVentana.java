@@ -26,20 +26,31 @@ public class SegundaVentana extends JFrame {
     }
     public void createContents(){
         cargarImagenes();
+        
+        Image imgRedimension=imgJLabel.getScaledInstance(300, 210, Image.SCALE_SMOOTH);
+        JLabel img = new JLabel(new ImageIcon(imgRedimension));
+        JPanel ventana= new JPanel(new GridLayout(0,1));
+        ventana.add(img);
+        
+        JPanel selecAvatar=new JPanel(new FlowLayout());
         iconsList1 = new JComboBox<>(iconsArr1.toArray(new ImageIcon[0]));
         iconsList1.setPreferredSize(new Dimension(110, 100));
-        add(iconsList1);
+        selecAvatar.add(iconsList1);
         iconsList1.addItemListener(new ListenerDespegable());
         
         iconsList2 = new JComboBox<>(iconsArr2.toArray(new ImageIcon[0]));
         iconsList2.setPreferredSize(new Dimension(110, 100));
-        add(iconsList2);
+        selecAvatar.add(iconsList2);
         iconsList2.addItemListener(new ListenerDespegable()); //de iconList1 a iconList2
         
         empezarButton = new JButton("Empezar");
         empezarButton.setBounds(100,100,100,100);
-        add(empezarButton);
+        
         empezarButton.addActionListener(new Listener());
+        selecAvatar.add(empezarButton);
+        
+        ventana.add(selecAvatar);
+        add(ventana);
     }
     private void cargarImagenes(){
         ImageIcon icon11 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador1/Icono1.1.png?raw=true");
@@ -98,9 +109,9 @@ public class SegundaVentana extends JFrame {
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
-        grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
-        grafico.drawImage(logoJuego,100,0,this);
-        grafico.drawImage(imgJLabel,100,0,this);
+        //grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this); //No carga bien las opciones de elegir iconos 
+        //grafico.drawImage(logoJuego,100,0,this);                       // mejor funciona sin el fondo, o solo con un fondo de color, con background o algo asi
+        //grafico.drawImage(imgJLabel,80,50,200,150,this);
     }
     public static void main (String[] args){
             new SegundaVentana();
