@@ -14,8 +14,8 @@ public class VentanaPelea extends JFrame{
     private static final int ALTO=500;
     
     
-    private Tripulacion barco1 = new Tripulacion("Barbosa");
-    private Tripulacion barco2 = new Tripulacion("Garfio");
+    private Tripulacion barco1 ;
+    private Tripulacion barco2 ;
     private int pirataElegido1 = -1;
     private int pirataElegido2 = -1;
     
@@ -23,7 +23,10 @@ public class VentanaPelea extends JFrame{
     
     private Image fondo;
     
-    public VentanaPelea(){
+    public VentanaPelea(Tripulacion barc1, Tripulacion barc2){
+        barco1= barc1;
+        barco2= barc2;
+        
         setTitle("Batalla");
         setSize(ANCHO,ALTO);
         setLayout(new FlowLayout());
@@ -224,7 +227,7 @@ public class VentanaPelea extends JFrame{
         }
     }
     public static void main (String[] args){
-            new VentanaPelea();
+            //new VentanaPelea();
     }
     
     public void paint (Graphics grafico){

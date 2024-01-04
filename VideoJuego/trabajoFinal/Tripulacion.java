@@ -5,11 +5,14 @@
 package trabajofinal;
 
 import java.util.*;
+import javax.swing.ImageIcon;
 public class Tripulacion {
     private ArrayList<Piratas> tripulacion;
     public int CANTIDAD_MAXIMA=10;
     private int cantidadPiratas;
     private String capitan;
+    private ImageIcon avatarTripulacion;
+    
     
     public Tripulacion(String capi) {
         tripulacion = new ArrayList<Piratas>();
@@ -17,6 +20,7 @@ public class Tripulacion {
         reclutarPiratas();
         capitan = capi;
     }
+    
     private void reclutarPiratas() {
         Random rand = new Random();
         cantidadPiratas = rand.nextInt(CANTIDAD_MAXIMA - 6) + 6; // De 6 a 9 
@@ -93,6 +97,14 @@ public class Tripulacion {
 
     public String getCapitan() {
         return capitan;
+    }
+
+    public ImageIcon getAvatarTripulacion() {
+        return avatarTripulacion;
+    }
+
+    public void setAvatarTripulacion(ImageIcon avatarTripulacion) {
+        this.avatarTripulacion = avatarTripulacion;
     }
     
     

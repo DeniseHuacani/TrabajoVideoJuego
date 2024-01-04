@@ -18,13 +18,20 @@ public class PanelFondo extends JPanel {
     private int numerodado=0;
     private int numerodado2=0;
     
-    public PanelFondo(int tamMax,int cantidadCasillas){
+    private Tripulacion barco1 ;
+    private Tripulacion barco2 ;
+    
+    public PanelFondo(int tamMax,int cantidadCasillas, Tripulacion bar1, Tripulacion bar2){
         this.tamMax = tamMax;
         this.cantidadCasillas = cantidadCasillas;
+        barco1= bar1;
+        barco2= bar2;
+        
         tamCasilla = tamMax/cantidadCasillas;
         cargarImagenDeFondo();
         inicializarCamino();
         inicializarBotonActualizar();
+        
     }
     private void cargarImagenDeFondo() {
         try {
@@ -57,7 +64,7 @@ public class PanelFondo extends JPanel {
                     //repaint(); // Esto llamará al método paint nuevamente
                 }
                 if(numerodado==4 || numerodado==5  || numerodado==6  || numerodado==15  || numerodado==16){
-                    new VentanaPelea();
+                    new VentanaPelea(barco1, barco2);
                 }
                 turno++;
                 
@@ -71,28 +78,50 @@ public class PanelFondo extends JPanel {
             for (int j = 0; j < tablero[i].length; j++) {
                 Casilla cActual = tablero[i][j];
                 if (cActual.getPosicion() == posicion && cActual.getNumerobarco() == numero) {
-                    // Restablecer el color a null para borrar la pintura
+                    
+                    System.out.println("Antes de borrar - Avatar: " + cActual.getAvatar());
+                    cActual.setAvatar(null);
+                    System.out.println("Después de borrar - Avatar: " + cActual.getAvatar());
+                    repaint();
                     cActual.setColor(new Color(229, 231, 233,200));
                 }
             }
         }
-        repaint();
+        
     }
-    public void pintarPosicion(int n,int numeroBarco) {
+    public void pintarPosicion(int n, int numeroBarco) {
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 Casilla cActual = tablero[i][j];
-                if (cActual.getPosicion() == n && cActual.getNumerobarco()==numeroBarco) {
-                    if(numeroBarco==1){
-                        cActual.setColor(Color.BLACK);
+                if (cActual.getPosicion() == n && cActual.getNumerobarco() == numeroBarco) {
+                    // Obtener el avatar de la tripulación
+                    if(numeroBarco ==1){
+                        ImageIcon avatar1=barco1.getAvatarTripulacion();
+                        System.out.println("Avatar: " + avatar1);
+                        // Establecer el fondo de la casilla con el avatar
+                        cActual.setAvatar(avatar1);
+                    }else{
+                        ImageIcon avatar1=barco2.getAvatarTripulacion();
+                        System.out.println("Avatar: " + avatar1);
+                        // Establecer el fondo de la casilla con el avatar
+                        cActual.setAvatar(avatar1);
                     }
-                    if(numeroBarco==2){
-                        cActual.setColor(Color.BLUE);
-                    }// Cambiar a Color.ORANGE o el color que desees
+                    
                 }
             }
         }
         repaint(); // Llamada para repintar el panel y reflejar los cambios
+    }
+
+    // Método para obtener el avatar de la tripulación según el número del barco
+    private ImageIcon obtenerAvatar(int numeroBarco) {
+        if (numeroBarco == 1) {
+            return barco1.getAvatarTripulacion(); // Reemplaza barco1 con tu objeto Tripulacion
+        } else if (numeroBarco == 2) {
+            return barco2.getAvatarTripulacion(); // Reemplaza barco2 con tu objeto Tripulacion
+        }
+        // Puedes manejar otros casos según sea necesario
+        return null; // o un avatar predeterminado si es necesario
     }
     private void inicializarCamino(){
         tablero = new Casilla [20][30];
@@ -210,12 +239,11 @@ public class PanelFondo extends JPanel {
             for (int j = 0; j < tablero[i].length; j++){
                 Casilla cActual = tablero[i][j];
                 Color colorCasilla = cActual.getColor();
-                grafico.setColor(colorCasilla);
-                grafico.fillRect(j*tamCasilla, i*tamCasilla,tamCasilla-1,tamCasilla-1);
+                //grafico.setColor(colorCasilla);
+                //grafico.fillRect(j*tamCasilla, i*tamCasilla,tamCasilla-1,tamCasilla-1);
+                cActual.paint(grafico, j * tamCasilla, i * tamCasilla, tamCasilla - 1, tamCasilla - 1);
             }
         }
     }
-
-    
     
 }

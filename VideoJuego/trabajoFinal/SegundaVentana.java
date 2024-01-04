@@ -96,14 +96,25 @@ public class SegundaVentana extends JFrame {
         public void actionPerformed(ActionEvent e){
             if(e.getSource() == empezarButton){
                 dispose(); //para que se cierre la ventana
-                Juego.main(new String[]{});
+                
+                
+                ImageIcon avatarBarco1 =  (ImageIcon)iconsList1.getSelectedItem();
+                ImageIcon avatarBarco2 =  (ImageIcon)iconsList2.getSelectedItem();
+                
+                Tripulacion barco1 = new Tripulacion("Barbosa");
+                Tripulacion barco2 = new Tripulacion("Garfio");
+                barco1.setAvatarTripulacion(avatarBarco1);
+                barco2.setAvatarTripulacion(avatarBarco2);
+                
+                new Juego(barco1, barco2);
+                
             }   
         }
     }
     private class ListenerDespegable implements ItemListener {
         public void itemStateChanged(ItemEvent e) {
             if (e.getStateChange() == ItemEvent.SELECTED) {    //de while a if
-                repaint();
+                
             }
         }
     }
