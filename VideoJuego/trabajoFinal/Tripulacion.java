@@ -9,11 +9,13 @@ public class Tripulacion {
     private ArrayList<Piratas> tripulacion;
     public int CANTIDAD_MAXIMA=10;
     private int cantidadPiratas;
+    private String capitan;
     
-    public Tripulacion(String capitan) {
+    public Tripulacion(String capi) {
         tripulacion = new ArrayList<Piratas>();
         tripulacion.add(new Capitan(capitan,100,true)); //añadimos a ti, capitan
         reclutarPiratas();
+        capitan = capi;
     }
     private void reclutarPiratas() {
         Random rand = new Random();
@@ -85,6 +87,14 @@ public class Tripulacion {
     public int getCantidadPiratas() {
         return cantidadPiratas;
     }
+    public ArrayList<Piratas> getTripulacion() {
+        return tripulacion;
+    }
+
+    public String getCapitan() {
+        return capitan;
+    }
+    
     
 
 }

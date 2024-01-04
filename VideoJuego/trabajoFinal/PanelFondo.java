@@ -56,8 +56,8 @@ public class PanelFondo extends JPanel {
                     System.out.println("Jugador 1 : "+numerodado2);
                     //repaint(); // Esto llamará al método paint nuevamente
                 }
-                if(numerodado==numerodado2){
-                    
+                if(numerodado==4 || numerodado==5  || numerodado==6  || numerodado==15  || numerodado==16){
+                    new VentanaPelea();
                 }
                 turno++;
                 

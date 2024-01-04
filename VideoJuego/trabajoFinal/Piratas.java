@@ -26,6 +26,15 @@ public abstract class Piratas {
     public abstract int  aleatorioVidas();
     public abstract int  aleatorioNAtaque();
     
+    public void eliminarPirata() {
+        estaVivo = false;
+    }
+
+    public void aumentarVidaPirata(int cantidad) {
+        if (estaVivo) {
+            vida += cantidad;
+        }
+    }
     public String getNombre() {
         return nombre;
     }
