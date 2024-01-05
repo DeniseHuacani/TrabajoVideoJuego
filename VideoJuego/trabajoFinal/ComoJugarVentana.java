@@ -4,26 +4,33 @@ import java.awt.event.*;
 import java.net.URL;
 import javax.swing.*;
 
-public class HistoriaVentana extends JFrame {
+public class ComoJugarVentana extends JFrame{
     private static final int ANCHO = 700;
     private static final int ALTO = 680;
-    private Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
-    private Image historia = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/hsitoria.png?raw=true");
+    private Image img = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
     private JButton regresarButton;
     private final Image imgRegresar = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/boton%20regresar%20(3).png?raw=true");
 
-    public HistoriaVentana(){
-        setTitle("THE LAST SHINE CHANCE: Historia");
+    public ComoJugarVentana(){
+        setTitle("THE LAST SHINE CHANCE: Como jugar");
         setSize(ANCHO,ALTO);
         createContents();
         setVisible(true);
     }
     private void createContents(){
         regresarButton = new JButton();
-        configurarBoton(regresarButton,imgRegresar);
+        configurarBoton(regresarButton,img);
         add(regresarButton, BorderLayout.SOUTH);
         regresarButton.setHorizontalAlignment(SwingConstants.LEFT);
         regresarButton.addActionListener(new Listener());
+    }
+    private void configurarBoton(JButton unBoton,Image img){
+        unBoton.setOpaque(false); //Lo vuelve transparente antes de agregar la imgen
+        unBoton.setContentAreaFilled(false); // Establece el fondo del botón como transparente
+        unBoton.setBorderPainted(false); // Elimina el borde del botón
+        unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
+        unBoton.setBackground(new Color(0, 0, 0, 0));
+        unBoton.add(new JLabel(new ImageIcon(img)));
     }
     private Image cargarImagen(String url) {
         try {
@@ -33,14 +40,6 @@ public class HistoriaVentana extends JFrame {
             e.printStackTrace();
         }
         return null;
-    }
-    private void configurarBoton(JButton unBoton,Image img){
-        unBoton.setOpaque(false); //Lo vuelve transparente antes de agregar la imgen
-        unBoton.setContentAreaFilled(false); // Establece el fondo del botón como transparente
-        unBoton.setBorderPainted(false); // Elimina el borde del botón
-        unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
-        unBoton.setBackground(new Color(0, 0, 0, 0));
-        unBoton.add(new JLabel(new ImageIcon(img)));
     }
     private class Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -52,10 +51,6 @@ public class HistoriaVentana extends JFrame {
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
-        grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
-        grafico.drawImage(historia,81,40,530,530,this);
-    }
-    public static void main (String[] args){
-        new HistoriaVentana();
+        grafico.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
 }
