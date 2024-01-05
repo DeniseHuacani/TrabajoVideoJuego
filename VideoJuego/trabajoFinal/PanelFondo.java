@@ -71,48 +71,7 @@ public class PanelFondo extends JPanel implements Serializable{
                     pintarPosicion(juego.getNumeroDado(),2);
                     System.out.println("Jugador 2 : "+juego.getNumeroDado());
                     repaint();
-                    if(existeEnArray(numpelea, numerodado2) ||existeEnArray(numpelea, numerodado)){
-                        new VentanaPelea(barco1, barco2);
-                        System.out.println("pelea ");
-                    }
-
-                    else if(existeEnArray(numSumaVida, numerodado2) ){
-                        barco1.aumentarVidaEquipo(2);
-                        System.out.println("suma" +numerodado2);
-                        JOptionPane.showMessageDialog(null, "Te encontraste con alimentos, Sube de vida +2 a todo el equipo", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else if(existeEnArray(numMenosVida, numerodado2) ){
-                        barco1.bajarVidaEquipo(2);
-                        System.out.println("menos " +numerodado2);
-                        JOptionPane.showMessageDialog(null, "Te encontraste con un calamar Baja la vida -2 a todo el equipo", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else if(existeEnArray(numAdelante, numerodado2) ){
-                        borrarCasillaPintada(numerodado2,1);
-                        numerodado2+=3;
-                        System.out.println("adelantar" +numerodado2);
-                        pintarPosicion(numerodado2,1);
-                        repaint();
-                        JOptionPane.showMessageDialog(null, "Corriente : Impulsa a tu barco ,avanzas tres casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
-                    }else if(existeEnArray(numRetrocede, numerodado2) ){
-                        borrarCasillaPintada(numerodado2,1);
-                        numerodado2-=4;
-                        System.out.println("retroceder" +numerodado2);
-                        pintarPosicion(numerodado2,1);
-                        repaint();
-                        JOptionPane.showMessageDialog(null, "El otroequipo lanza un cañon, retrocedes 4 casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-                else{
-                    
-                    btnActualizar.setText("TURNO : JUGADOR 2");
-                    borrarCasillaPintada(numerodado2,1);
-                    numerodado2 += rand.nextInt(5)+5;
-                    juego.setNumeroDado2(numerodado2);
-                    
-                    pintarPosicion(juego.getNumeroDado2(),1);
-                    System.out.println("Jugador 1 : "+juego.getNumeroDado2());
-                    repaint();
-                    if(existeEnArray(numpelea, numerodado2) ||existeEnArray(numpelea, numerodado)){
+                    if(existeEnArray(numpelea, numerodado)){
                         new VentanaPelea(barco1, barco2);
                         System.out.println("pelea ");
                     }
@@ -130,29 +89,70 @@ public class PanelFondo extends JPanel implements Serializable{
                     }
 
                     else if(existeEnArray(numAdelante, numerodado)){
+                        JOptionPane.showMessageDialog(null, "Corriente : Impulsa a tu barco ,avanzas tres casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
                         borrarCasillaPintada(numerodado,2);
                         numerodado+=3;
                         System.out.println("adelantar" +numerodado);
                         pintarPosicion(numerodado,2);
                         repaint();
-                        JOptionPane.showMessageDialog(null, "Corriente : Impulsa a tu barco ,avanzas tres casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                        
                     }
 
                     else if(existeEnArray(numRetrocede, numerodado)){borrarCasillaPintada(numerodado,2);
+                    JOptionPane.showMessageDialog(null, "El otroequipo lanza un cañon, retrocedes 4 casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
                         borrarCasillaPintada(numerodado,2);
                         numerodado-=4;
                         System.out.println("retroceder" +numerodado);
                         pintarPosicion(numerodado,2);
                         repaint();
-                        JOptionPane.showMessageDialog(null, "El otroequipo lanza un cañon, retrocedes 4 casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                        
                     }
                 }
-                
-            
-                
-                
+                else{
+                    
+                    btnActualizar.setText("TURNO : JUGADOR 2");
+                    borrarCasillaPintada(numerodado2,1);
+                    numerodado2 += rand.nextInt(5)+5;
+                    juego.setNumeroDado2(numerodado2);
+                    
+                    pintarPosicion(juego.getNumeroDado2(),1);
+                    System.out.println("Jugador 1 : "+juego.getNumeroDado2());
+                    repaint();
+                    
+                    
+                    if(existeEnArray(numpelea, numerodado2)){
+                        new VentanaPelea(barco1, barco2);
+                        System.out.println("pelea ");
+                    }
+
+                    else if(existeEnArray(numSumaVida, numerodado2) ){
+                        barco1.aumentarVidaEquipo(2);
+                        System.out.println("suma" +numerodado2);
+                        JOptionPane.showMessageDialog(null, "Te encontraste con alimentos, Sube de vida +2 a todo el equipo", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else if(existeEnArray(numMenosVida, numerodado2) ){
+                        barco1.bajarVidaEquipo(2);
+                        System.out.println("menos " +numerodado2);
+                        JOptionPane.showMessageDialog(null, "Te encontraste con un calamar Baja la vida -2 a todo el equipo", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else if(existeEnArray(numAdelante, numerodado2) ){
+                        JOptionPane.showMessageDialog(null, "Corriente : Impulsa a tu barco ,avanzas tres casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                        borrarCasillaPintada(numerodado2,1);
+                        numerodado2+=3;
+                        System.out.println("adelantar" +numerodado2);
+                        pintarPosicion(numerodado2,1);
+                        repaint();
+                        
+                    }else if(existeEnArray(numRetrocede, numerodado2) ){
+                        JOptionPane.showMessageDialog(null, "El otroequipo lanza un cañon, retrocedes 4 casillas", "Resultado ", JOptionPane.INFORMATION_MESSAGE);
+                        borrarCasillaPintada(numerodado2,1);
+                        numerodado2-=4;
+                        System.out.println("retroceder" +numerodado2);
+                        pintarPosicion(numerodado2,1);
+                        repaint(); 
+                    }
+                }
                 turno++;
-                
             }
         });
 
