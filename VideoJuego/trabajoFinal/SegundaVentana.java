@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
     private JButton empezarButton;
-    private final Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
+    private final Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondo2da.jpg?raw=true");
     private final Image logoJuego = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/logo.png?raw=true");;
     private final Image imgJLabel = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/segundaVentana.png?raw=true");;
     private JComboBox<ImageIcon> iconsList1;
@@ -120,6 +120,7 @@ public class SegundaVentana extends JFrame {
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
+        
         //grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this); //No carga bien las opciones de elegir iconos 
         //grafico.drawImage(logoJuego,100,0,this);                       // mejor funciona sin el fondo, o solo con un fondo de color, con background o algo asi
         //grafico.drawImage(imgJLabel,80,50,200,150,this);
