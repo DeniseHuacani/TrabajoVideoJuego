@@ -1,34 +1,48 @@
 package trabajofinal;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.ImageIcon;
 public class Casilla {
     private boolean perteneceCamino;
     private Color color;
-    
+    private boolean perteneceEspecial = false;
     private int numerobarco;
     private int posicion;
-    
+    public static ArrayList <Casilla> posicionesJug1 = new ArrayList<>();
+    public static ArrayList <Casilla> posicionesJug2 = new ArrayList<>();
+    private ImageIcon avatar;
+    //Colores
     Color colorMar = new Color(0, 0, 255, 0); 
     Color colorCamino = new Color(229, 231, 233,200); 
     Color colorCamNoValido = new Color(185, 185, 185,200); 
+    Color colorCasillaEspecial = new Color (0,0,0,0);
+    //bonus
+    String bonus = ""; //calamar,uvas,batalla,corriente,cañon
     
-    private ImageIcon avatar;
     public Casilla(){
         
     }
-    public void setCamino(Boolean booleano){
+    public Casilla setCamino(Boolean booleano){
         this.perteneceCamino = booleano;
-        
         if (booleano)
             color = colorCamino;
-        else{
+        else
             color = colorMar;
-        } 
-            
+        return this;        
     }
     public void setCaminoNoValido(){
         color = colorCamNoValido;
+    }
+    public void setCasillaEspecial(String typeOfBonus ){
+        color = colorCasillaEspecial;
+        this.perteneceEspecial = true;
+        bonus = typeOfBonus;
+    }
+    public String getBonus (){
+        return bonus;
     }
     public boolean getPerteneceCamino(){
         return perteneceCamino;
@@ -46,6 +60,10 @@ public class Casilla {
 
     public void setPosicion(int posicion) {
         this.posicion = posicion;
+        if (numerobarco == 1)
+            posicionesJug1.add(this);
+        else
+            posicionesJug2.add(this);
     }
 
     public int getNumerobarco() {

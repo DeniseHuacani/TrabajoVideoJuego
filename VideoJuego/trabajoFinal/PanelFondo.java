@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Random;
+import java.util.*;
 public class PanelFondo extends JPanel {
     protected int cantidadCasillas;
     protected int tamMax;
     protected int tamCasilla;
+    
     protected Casilla[][] tablero;
     private Image fondo;
     private JButton btnActualizar;
@@ -35,7 +36,7 @@ public class PanelFondo extends JPanel {
     }
     private void cargarImagenDeFondo() {
         try {
-            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondoTablero.png?raw=true";
+            String urlImagen = "https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondoT.png?raw=true";
             fondo = new ImageIcon(new URL(urlImagen)).getImage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,6 +187,7 @@ public class PanelFondo extends JPanel {
                     tablero[i][6].setCaminoNoValido(); //vertical
                 }
             }
+
             
             
             
@@ -224,14 +226,17 @@ public class PanelFondo extends JPanel {
                     p++;
                 }else{
                     tablero[i][24].setCaminoNoValido(); // vertical
-                }
+                } //
+                Casilla.posicionesJug1.get(1).setCasillaEspecial("corriente");
                 
             }
             
         }
         
     }
-    
+    private void addList(ArrayList arr){
+        
+    }
     public void paint (Graphics grafico){
         super.paint(grafico);
         grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
