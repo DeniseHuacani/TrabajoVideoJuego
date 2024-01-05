@@ -15,7 +15,7 @@ public class Menu extends JFrame{
     private JButton historiaButton;//opcion3, menu principal
     private  Image imgHistoria = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true").getImage());
     private JButton cargarJuegoButton; // cargar el juego
-    private final Image imgCargarJuego = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true").getImage();
+    private final Image imgCargarJuego = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionJGuardado.png?raw=true").getImage();
 
     private Image fondo;
     private Juego juego;
@@ -35,25 +35,25 @@ public class Menu extends JFrame{
         //cargando opciones: botones en el menu
         jugarButton = new JButton();
         configurarBoton(jugarButton,imgJugar);
-        jugarButton.setBounds(245,355,210,80);
+        jugarButton.setBounds(245,345,210,80);
         add(jugarButton);
         jugarButton.addActionListener(new ListenerJugar());
         
         comoJugarButton = new JButton(); 
         configurarBoton(comoJugarButton,imgComoJugar);
-        comoJugarButton.setBounds(245,440,209,80);
+        comoJugarButton.setBounds(245,430,209,80);
         add(comoJugarButton);
         comoJugarButton.addActionListener(new ListenerComoJugar());
         
         historiaButton = new JButton();
         configurarBoton(historiaButton,imgHistoria);
-        historiaButton.setBounds(245,525,209,80);
+        historiaButton.setBounds(245,515,209,80);
         add(historiaButton);
         historiaButton.addActionListener(new ListenerHistoria()); 
         
         cargarJuegoButton = new JButton();
         configurarBoton(cargarJuegoButton, imgCargarJuego);
-        cargarJuegoButton.setBounds(245, 610, 209, 80);
+        cargarJuegoButton.setBounds(245, 600, 209, 80);
         add(cargarJuegoButton);
         cargarJuegoButton.addActionListener(new ListenerCargarJuego());
     }

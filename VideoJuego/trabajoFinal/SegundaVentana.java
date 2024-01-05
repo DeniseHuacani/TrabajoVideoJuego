@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
     private JButton empezarButton;
-    private final Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/fondo2da.jpg?raw=true");
-    private final Image logoJuego = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/logo.png?raw=true");;
+    private final Image imgJug1 = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/jug1.png?raw=true");
+    private final Image imgJug2 = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/jug2.png?raw=true");
     private final Image imgJLabel = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/segundaVentana.png?raw=true");;
     private JComboBox<ImageIcon> iconsList1;
     private JComboBox<ImageIcon> iconsList2;
@@ -17,11 +17,12 @@ public class SegundaVentana extends JFrame {
 
     public SegundaVentana() {
         setTitle("THE LAST SHINE CHANCE: Personalizacion de Jugadores");
-        setSize(500, 460);
+        setSize(700, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
         createContents();
+        
         setVisible(true);
     }
     public void createContents(){
@@ -29,8 +30,14 @@ public class SegundaVentana extends JFrame {
         
         Image imgRedimension=imgJLabel.getScaledInstance(300, 210, Image.SCALE_SMOOTH);
         JLabel img = new JLabel(new ImageIcon(imgRedimension));
-        JPanel ventana= new JPanel(new GridLayout(0,1));
-        ventana.add(img);
+        JLabel img1 = new JLabel(new ImageIcon(imgJug1));
+        JLabel img2 = new JLabel(new ImageIcon(imgJug2));
+        JPanel ventana= new JPanel(new GridLayout());
+        ventana.add(img,BorderLayout.SOUTH);
+        img1.setBounds(150,40,100,40);
+        add(img1);
+        add(img2);
+        
         
         JPanel selecAvatar=new JPanel(new FlowLayout());
         iconsList1 = new JComboBox<>(iconsArr1.toArray(new ImageIcon[0]));
