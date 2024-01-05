@@ -4,13 +4,14 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Toshiba
  */
-public class Marino extends Piratas{
+public class Marino extends Piratas implements Serializable{
     public Marino (String na , double o ,boolean es){
         super(na,o,es);
         setVida(aleatorioVidas());

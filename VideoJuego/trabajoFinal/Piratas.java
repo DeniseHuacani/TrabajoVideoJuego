@@ -4,8 +4,10 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 
-public abstract class Piratas {
+
+public abstract class Piratas implements Serializable{
     private String nombre;
     private int vida;
     private int nivelAtaque;

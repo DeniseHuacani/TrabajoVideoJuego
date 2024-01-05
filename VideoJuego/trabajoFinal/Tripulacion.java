@@ -4,9 +4,10 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.ImageIcon;
-public class Tripulacion {
+public class Tripulacion implements Serializable{
     private ArrayList<Piratas> tripulacion;
     public int CANTIDAD_MAXIMA=10;
     private int cantidadPiratas;

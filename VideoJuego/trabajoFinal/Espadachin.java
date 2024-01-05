@@ -4,9 +4,10 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Espadachin extends Piratas{
+public class Espadachin extends Piratas implements Serializable{
     private String tipoEspada; 
     
     public Espadachin(String na , double o,  boolean es){

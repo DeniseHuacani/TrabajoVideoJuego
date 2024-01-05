@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.net.URL;
 import javax.swing.*;
 
-public class HistoriaVentana extends JFrame{
+public class HistoriaVentana extends JFrame {
     private static final int ANCHO = 700;
     private static final int ALTO = 730;
     private Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
