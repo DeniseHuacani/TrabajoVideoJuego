@@ -4,13 +4,14 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Toshiba
  */
-public class Barbaro extends Piratas{
+public class Barbaro extends Piratas implements Serializable{
     
     public Barbaro(String na , double o,  boolean es){
         super(na,o, es);

@@ -4,8 +4,9 @@
  */
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.*;
-public class Capitan extends Piratas{
+public class Capitan extends Piratas implements Serializable{
     
     public Capitan(String na , double o, boolean es){
         super(na,o,es);

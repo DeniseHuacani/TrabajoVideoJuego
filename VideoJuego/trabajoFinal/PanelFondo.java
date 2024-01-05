@@ -4,34 +4,42 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.net.URL;
-import java.util.*;
-public class PanelFondo extends JPanel {
+import java.util.Arrays;
+import java.util.Random;
+public class PanelFondo extends JPanel implements Serializable{
     protected int cantidadCasillas;
     protected int tamMax;
     protected int tamCasilla;
-    
     protected Casilla[][] tablero;
-    private Image fondo;
-    private JButton btnActualizar;
+    private transient Image fondo;
+    private transient JButton btnActualizar;
     private int turno = 1;
     
-    private int numerodado=0;
-    private int numerodado2=0;
+    private int numerodado;
+    private int numerodado2;
     
     private Tripulacion barco1 ;
     private Tripulacion barco2 ;
     
-    public PanelFondo(int tamMax,int cantidadCasillas, Tripulacion bar1, Tripulacion bar2){
+    private transient JButton btnGuardar;
+    private Juego juego;
+    
+    public PanelFondo(int tamMax,int cantidadCasillas, Tripulacion bar1, Tripulacion bar2 , Juego jueg){
         this.tamMax = tamMax;
         this.cantidadCasillas = cantidadCasillas;
         barco1= bar1;
         barco2= bar2;
-        
+        numerodado= jueg.getNumeroDado();
+        numerodado2=jueg.getNumeroDado2();
+        juego = jueg;
         tamCasilla = tamMax/cantidadCasillas;
         cargarImagenDeFondo();
         inicializarCamino();
+        definirEspeciales();
         inicializarBotonActualizar();
+        inicializarBotonGuardar();
         
     }
     private void cargarImagenDeFondo() {
@@ -49,20 +57,26 @@ public class PanelFondo extends JPanel {
             
             public void actionPerformed(ActionEvent e) {
                 if(turno%2==0){
+                    
                     btnActualizar.setText("TURNO : JUGADOR 1");
                     borrarCasillaPintada(numerodado,2);
                     numerodado += rand.nextInt(5)+5;
-                    pintarPosicion(numerodado,2);
-                    System.out.println("Jugador 2 : "+numerodado);
-                    //repaint(); // Esto llamará al método paint nuevamente// no es necesario , ya lo probe y funciona igual
+                    juego.setNumeroDado(numerodado);
+                    
+                    pintarPosicion(juego.getNumeroDado(),2);
+                    System.out.println("Jugador 2 : "+juego.getNumeroDado());
+                    repaint();
                 }
                 else{
+                    
                     btnActualizar.setText("TURNO : JUGADOR 2");
                     borrarCasillaPintada(numerodado2,1);
                     numerodado2 += rand.nextInt(5)+5;
-                    pintarPosicion(numerodado2,1);
-                    System.out.println("Jugador 1 : "+numerodado2);
-                    //repaint(); // Esto llamará al método paint nuevamente
+                    juego.setNumeroDado2(numerodado2);
+                    
+                    pintarPosicion(juego.getNumeroDado2(),1);
+                    System.out.println("Jugador 1 : "+juego.getNumeroDado2());
+                    repaint();
                 }
                 if(numerodado==4 || numerodado==5  || numerodado==6  || numerodado==15  || numerodado==16){
                     new VentanaPelea(barco1, barco2);
@@ -187,7 +201,6 @@ public class PanelFondo extends JPanel {
                     tablero[i][6].setCaminoNoValido(); //vertical
                 }
             }
-
             
             
             
@@ -226,16 +239,32 @@ public class PanelFondo extends JPanel {
                     p++;
                 }else{
                     tablero[i][24].setCaminoNoValido(); // vertical
-                } //
-                Casilla.posicionesJug1.get(1).setCasillaEspecial("corriente");
+                }
                 
             }
             
         }
         
     }
-    private void addList(ArrayList arr){
-        
+    public void definirEspeciales(){
+        int[] numEspeciales= {3,4,9,10,14,15,18,19,20,21,24,25,27,28,31,32,33,34,36,37,42,43,50,51,57,58,59,60,68,69,70,71,75,76,77,78,80,81,83,84,87,88,94,95,96,97};
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                Casilla cActual = tablero[i][j];
+                if (existeEnArray(numEspeciales, cActual.getPosicion())) {
+                    cActual.setCasillaEspecial(true);
+                }
+            }
+        }
+        repaint(); 
+    }
+    public boolean existeEnArray(int[] array, int numero) {
+        for (int elemento : array) {
+            if (elemento == numero) {
+                return true;
+            }
+        }
+        return false;
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
@@ -250,5 +279,35 @@ public class PanelFondo extends JPanel {
             }
         }
     }
+    private void inicializarBotonGuardar() {
+        btnGuardar = new JButton("Guardar Juego");
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                juego.guardarJuego("avance.txt");  
+                System.out.println("Juego guardado correctamente.");
+            }
+        });
+
+        add(btnGuardar, BorderLayout.NORTH);
+    }
+
+    public int getNumerodado() {
+        return numerodado;
+    }
+
+    public void setNumerodado(int numerodado) {
+        this.numerodado = numerodado;
+    }
+
+    public int getNumerodado2() {
+        return numerodado2;
+    }
+
+    public void setNumerodado2(int numerodado2) {
+        this.numerodado2 = numerodado2;
+    }
+    
+    
     
 }

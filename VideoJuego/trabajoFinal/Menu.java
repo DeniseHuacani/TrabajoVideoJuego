@@ -14,7 +14,11 @@ public class Menu extends JFrame{
     private  Image imgComoJugar = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(2).png?raw=true").getImage());
     private JButton historiaButton;//opcion3, menu principal
     private  Image imgHistoria = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true").getImage());
+    private JButton cargarJuegoButton; // cargar el juego
+    private final Image imgCargarJuego = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true").getImage();
+
     private Image fondo;
+    private Juego juego;
     
     public Menu(){
         setTitle("THE LAST SHINE VIDEOGAME: MENU");
@@ -34,16 +38,24 @@ public class Menu extends JFrame{
         jugarButton.setBounds(245,355,210,80);
         add(jugarButton);
         jugarButton.addActionListener(new ListenerJugar());
+        
         comoJugarButton = new JButton(); 
         configurarBoton(comoJugarButton,imgComoJugar);
         comoJugarButton.setBounds(245,440,209,80);
         add(comoJugarButton);
         comoJugarButton.addActionListener(new ListenerComoJugar());
+        
         historiaButton = new JButton();
         configurarBoton(historiaButton,imgHistoria);
         historiaButton.setBounds(245,525,209,80);
         add(historiaButton);
         historiaButton.addActionListener(new ListenerHistoria()); 
+        
+        cargarJuegoButton = new JButton();
+        configurarBoton(cargarJuegoButton, imgCargarJuego);
+        cargarJuegoButton.setBounds(245, 610, 209, 80);
+        add(cargarJuegoButton);
+        cargarJuegoButton.addActionListener(new ListenerCargarJuego());
     }
     private void configurarBoton(JButton unBoton,Image img){
         unBoton.setOpaque(false); //Lo vuelve transparente antes de agregar la imgen
@@ -99,6 +111,35 @@ public class Menu extends JFrame{
             if(e.getSource() == comoJugarButton){
                 dispose(); //para que se cierre la ventana
                 new SegundaVentana();
+            }
+        }
+    }
+    private class ListenerCargarJuego implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == cargarJuegoButton) {
+                dispose(); // Cierra la ventana actual
+                Juego juegoCargado= juego.cargarJuego("avance.txt");
+                
+                // Obtener los barcos del juego cargado
+                Tripulacion barco1Cargado = juegoCargado.getBarco1();
+                Tripulacion barco2Cargado = juegoCargado.getBarco2();
+                
+                
+
+                // Crear un nuevo PanelFondo con los datos cargados
+                PanelFondo tableroCargado = new PanelFondo(8000, 240, barco1Cargado, barco2Cargado, juegoCargado);
+                System.out.println(tableroCargado.getNumerodado());
+                System.out.println(tableroCargado.getNumerodado2());
+                tableroCargado.pintarPosicion(tableroCargado.getNumerodado(),2);
+                tableroCargado.pintarPosicion(tableroCargado.getNumerodado2(),1);
+                // Agregar el PanelFondo a un nuevo JFrame o a la ventana actual si es necesario
+                JFrame ventanaJuegoCargado = new JFrame("Juego Cargado");
+                ventanaJuegoCargado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                ventanaJuegoCargado.getContentPane().add(tableroCargado);
+                ventanaJuegoCargado.setSize(1000, 700);
+                ventanaJuegoCargado.setLocationRelativeTo(null);
+                ventanaJuegoCargado.setVisible(true);
+                
             }
         }
     }

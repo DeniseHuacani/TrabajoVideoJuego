@@ -1,12 +1,13 @@
 package trabajofinal;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Toshiba
  */
-public class Artillero extends Piratas{
+public class Artillero extends Piratas implements Serializable{
     private int cantidadBalas;
     
     public Artillero(String na , double o,  boolean es){

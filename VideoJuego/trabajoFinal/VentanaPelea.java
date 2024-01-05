@@ -9,7 +9,7 @@ import java.awt.event.*;
 import java.net.URL;
 import java.util.Random;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-public class VentanaPelea extends JFrame{
+public class VentanaPelea extends JFrame {
     private static final int ANCHO =570;
     private static final int ALTO=500;
     
