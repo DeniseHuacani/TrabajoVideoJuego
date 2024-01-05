@@ -5,9 +5,9 @@ import java.net.URL;
 import javax.swing.*;
 
 public class ComoJugarVentana extends JFrame{
-    private static final int ANCHO = 700;
-    private static final int ALTO = 680;
-    private Image img = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
+    private static final int ANCHO = 1821;
+    private static final int ALTO = 1620;
+    private Image img = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Instrucciones.png?raw=true");
     private JButton regresarButton;
     private final Image imgRegresar = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/boton%20regresar%20(3).png?raw=true");
 
@@ -19,7 +19,7 @@ public class ComoJugarVentana extends JFrame{
     }
     private void createContents(){
         regresarButton = new JButton();
-        configurarBoton(regresarButton,img);
+        configurarBoton(regresarButton,imgRegresar);
         add(regresarButton, BorderLayout.SOUTH);
         regresarButton.setHorizontalAlignment(SwingConstants.LEFT);
         regresarButton.addActionListener(new Listener());
@@ -51,6 +51,6 @@ public class ComoJugarVentana extends JFrame{
     }
     public void paint (Graphics grafico){
         super.paint(grafico);
-        grafico.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        grafico.drawImage(img, 0, 0, getWidth(), getHeight()-40, this);
     }
 }

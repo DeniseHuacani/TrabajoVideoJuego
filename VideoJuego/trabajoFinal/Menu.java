@@ -110,7 +110,7 @@ public class Menu extends JFrame{
         public void actionPerformed(ActionEvent e){
             if(e.getSource() == comoJugarButton){
                 dispose(); //para que se cierre la ventana
-                new SegundaVentana();
+                new ComoJugarVentana();
             }
         }
     }
