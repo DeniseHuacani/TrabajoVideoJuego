@@ -6,11 +6,11 @@ import javax.swing.*;
 
 public class HistoriaVentana extends JFrame {
     private static final int ANCHO = 700;
-    private static final int ALTO = 730;
+    private static final int ALTO = 680;
     private Image fondo = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/backgroung.png?raw=true");
     private Image historia = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/hsitoria.png?raw=true");
     private JButton regresarButton;
-    private final Image imgRegresar = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/boton%20regresar.png?raw=true");
+    private final Image imgRegresar = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/boton%20regresar%20(3).png?raw=true");
 
     public HistoriaVentana(){
         setTitle("THE LAST SHINE CHANCE: Historia");
