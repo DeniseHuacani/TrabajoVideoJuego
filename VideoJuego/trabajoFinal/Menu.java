@@ -9,13 +9,13 @@ public class Menu extends JFrame{
     private static final int ALTO = 760;
     private Image logoJuego;
     private JButton jugarButton; //opcion1, menu principal
-    private final Image imgJugar = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu.png?raw=true").getImage());
+    private final Image imgJugar = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/botones%20Menu/opcion%20menu.png?raw=true").getImage());
     private JButton comoJugarButton; //opcion2, menu principal
-    private  Image imgComoJugar = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(2).png?raw=true").getImage());
+    private  Image imgComoJugar = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/botones%20Menu/opcion%20menu%20(2).png?raw=true").getImage());
     private JButton historiaButton;//opcion3, menu principal
-    private  Image imgHistoria = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcion%20menu%20(3).png?raw=true").getImage());
+    private  Image imgHistoria = (cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/botones%20Menu/opcion%20menu%20(4).png?raw=true").getImage());
     private JButton cargarJuegoButton; // cargar el juego
-    private final Image imgCargarJuego = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/opcionJGuardado.png?raw=true").getImage();
+    private final Image imgCargarJuego = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/botones%20Menu/opcion%20menu%20(3).png?raw=true").getImage();
 
     private Image fondo;
     private Juego juego;
@@ -35,35 +35,35 @@ public class Menu extends JFrame{
         //cargando opciones: botones en el menu
         jugarButton = new JButton();
         configurarBoton(jugarButton,imgJugar);
-        jugarButton.setBounds(245,345,210,80);
+        jugarButton.setBounds(245,345,213,85);
         add(jugarButton);
         jugarButton.addActionListener(new ListenerJugar());
         
         comoJugarButton = new JButton(); 
         configurarBoton(comoJugarButton,imgComoJugar);
-        comoJugarButton.setBounds(245,430,209,80);
+        comoJugarButton.setBounds(245,430,213,85);
         add(comoJugarButton);
         comoJugarButton.addActionListener(new ListenerComoJugar());
         
         historiaButton = new JButton();
         configurarBoton(historiaButton,imgHistoria);
-        historiaButton.setBounds(245,515,209,80);
+        historiaButton.setBounds(245,515,213,85);
         add(historiaButton);
         historiaButton.addActionListener(new ListenerHistoria()); 
         
         cargarJuegoButton = new JButton();
         configurarBoton(cargarJuegoButton, imgCargarJuego);
-        cargarJuegoButton.setBounds(245, 600, 209, 80);
+        cargarJuegoButton.setBounds(245, 600, 213, 85);
         add(cargarJuegoButton);
         cargarJuegoButton.addActionListener(new ListenerCargarJuego());
     }
     private void configurarBoton(JButton unBoton,Image img){
         unBoton.setOpaque(false); //Lo vuelve transparente antes de agregar la imgen
-        unBoton.setContentAreaFilled(false); // Establece el fondo del botón como transparente
+        unBoton.setContentAreaFilled(true); // Establece el fondo del botón como transparente
         unBoton.setBorderPainted(false); // Elimina el borde del botón
-        unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
+        unBoton.setFocusPainted(true); // Elimina el efecto de enfoque
         unBoton.setBackground(new Color(0, 0, 0, 0));
-        unBoton.add(new JLabel(new ImageIcon(img)));
+        unBoton.setIcon(new ImageIcon(img));
     }
     private ImageIcon cargarIcon(String url) { //Metodo que carga las imagenes buttons
         try {

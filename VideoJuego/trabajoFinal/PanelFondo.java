@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Random;
 public class PanelFondo extends JPanel implements Serializable{
     protected int cantidadCasillas;
@@ -377,7 +376,5 @@ public class PanelFondo extends JPanel implements Serializable{
     public void setNumerodado2(int numerodado2) {
         this.numerodado2 = numerodado2;
     }
-    
-    
-    
+   
 }

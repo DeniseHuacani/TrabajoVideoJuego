@@ -17,7 +17,7 @@ public class SegundaVentana extends JFrame {
 
     public SegundaVentana() {
         setTitle("THE LAST SHINE CHANCE: Personalizacion de Jugadores");
-        setSize(700, 400);
+        setSize(456, 396);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
