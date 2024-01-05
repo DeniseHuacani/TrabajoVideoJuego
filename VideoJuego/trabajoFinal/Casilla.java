@@ -73,7 +73,7 @@ public class Casilla implements Serializable{
                 this.avatar = new ImageIcon(maspequeñoImage);
 
                 // Además de establecer el avatar, establecer el fondo de la casilla con el color transparente
-                this.color = new Color(0, 0, 0, 0);
+                this.color = new Color(255, 255, 255);
             }
         }
         

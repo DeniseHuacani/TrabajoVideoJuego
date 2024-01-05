@@ -88,7 +88,24 @@ public class Tripulacion implements Serializable{
             System.out.println("-------------------------\n"+pirata.toString()+"\n");
         }
     }
+    public void bajarVidaEquipo(int cantidad) {
+        for (Piratas pirata : tripulacion) {
+            pirata.setVida(pirata.getVida() - cantidad);
 
+            if (pirata.getVida() <= 0) {
+                tripulacion.remove(pirata);
+                
+            } else {
+                
+            }
+        }
+    }
+    public void aumentarVidaEquipo(int cantidad) {
+        for (Piratas pirata : tripulacion) {
+            pirata.setVida(pirata.getVida() + cantidad);
+
+        }
+    }
     public int getCantidadPiratas() {
         return cantidadPiratas;
     }
