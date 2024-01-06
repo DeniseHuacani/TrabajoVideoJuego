@@ -6,7 +6,12 @@ import java.util.*;
 import java.awt.event.*;
 
 public class SegundaVentana extends JFrame {
-    private JButton empezarButton;
+    private JButton jugarButton;
+    private JButton volverButton;
+    private JPanel background;
+    private final Image imgBackground;
+    private JPanel estandarte;
+    private final Image imgEstandarte;
     private final Image imgJug1 = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/jug1.png?raw=true");
     private final Image imgJug2 = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/jug2.png?raw=true");
     private final Image imgJLabel = cargarImagen("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/segundaVentana.png?raw=true");;
@@ -28,36 +33,32 @@ public class SegundaVentana extends JFrame {
     public void createContents(){
         cargarImagenes();
         
-        Image imgRedimension=imgJLabel.getScaledInstance(300, 210, Image.SCALE_SMOOTH);
+        Image imgRedimension = imgJLabel.getScaledInstance(300, 210, Image.SCALE_SMOOTH);
         JLabel img = new JLabel(new ImageIcon(imgRedimension));
         JLabel img1 = new JLabel(new ImageIcon(imgJug1));
         JLabel img2 = new JLabel(new ImageIcon(imgJug2));
-        JPanel ventana= new JPanel(new GridLayout());
-        ventana.add(img,BorderLayout.SOUTH);
         img1.setBounds(150,40,100,40);
+        
+        iconsList1 = new JComboBox<>(iconsArr1.toArray(new ImageIcon[0]));
+        iconsList1.setPreferredSize(new Dimension(110, 99));
+        iconsList2 = new JComboBox<>(iconsArr2.toArray(new ImageIcon[0]));
+        iconsList2.setPreferredSize(new Dimension(110, 99));
+        jugarButton = new JButton("Jugar");
+        volverButton = new JButton("Volver");
         add(img1);
         add(img2);
-        
-        
-        JPanel selecAvatar=new JPanel(new FlowLayout());
-        iconsList1 = new JComboBox<>(iconsArr1.toArray(new ImageIcon[0]));
-        iconsList1.setPreferredSize(new Dimension(110, 100));
-        selecAvatar.add(iconsList1);
+        add(iconsList1);
         iconsList1.addItemListener(new ListenerDespegable());
         
-        iconsList2 = new JComboBox<>(iconsArr2.toArray(new ImageIcon[0]));
-        iconsList2.setPreferredSize(new Dimension(110, 100));
-        selecAvatar.add(iconsList2);
+        
+        add(iconsList2);
         iconsList2.addItemListener(new ListenerDespegable()); //de iconList1 a iconList2
         
-        empezarButton = new JButton("Empezar");
-        empezarButton.setBounds(100,100,100,100);
+               
         
-        empezarButton.addActionListener(new Listener());
-        selecAvatar.add(empezarButton);
+        add(jugarButton);
+        jugarButton.addActionListener(new Listener());
         
-        ventana.add(selecAvatar);
-        add(ventana);
     }
     private void cargarImagenes(){
         ImageIcon icon11 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador1/Icono1.1.png?raw=true");
@@ -70,6 +71,7 @@ public class SegundaVentana extends JFrame {
         ImageIcon icon23 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador2/icono2.3.png?raw=true");
         ImageIcon icon24 = cargarIcon("https://github.com/DeniseHuacani/TrabajoVideoJuego/blob/main/VideoJuego/imagenes/Iconos/IconoJugador2/icono2.4.png?raw=true");
         iconsArr2 = cargarIconsArr(icon21,icon22,icon23,icon24);
+
     }
     private Image cargarImagen(String url) {
         try {
@@ -101,7 +103,7 @@ public class SegundaVentana extends JFrame {
     //Listeners
     private class Listener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(e.getSource() == empezarButton){
+            if(e.getSource() == jugarButton){
                 dispose(); //para que se cierre la ventana
                 
                 
@@ -125,13 +127,7 @@ public class SegundaVentana extends JFrame {
             }
         }
     }
-    public void paint (Graphics grafico){
-        super.paint(grafico);
-        
-        //grafico.drawImage(fondo, 0, 0, getWidth(), getHeight(), this); //No carga bien las opciones de elegir iconos 
-        //grafico.drawImage(logoJuego,100,0,this);                       // mejor funciona sin el fondo, o solo con un fondo de color, con background o algo asi
-        //grafico.drawImage(imgJLabel,80,50,200,150,this);
-    }
+
     public static void main (String[] args){
             new SegundaVentana();
     }

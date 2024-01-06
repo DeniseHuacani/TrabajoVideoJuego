@@ -40,7 +40,7 @@ public class HistoriaVentana extends JFrame {
         unBoton.setBorderPainted(false); // Elimina el borde del botón
         unBoton.setFocusPainted(false); // Elimina el efecto de enfoque
         unBoton.setBackground(new Color(0, 0, 0, 0));
-        unBoton.add(new JLabel(new ImageIcon(img)));
+        unBoton.add(new ImageIcon(img));
     }
     private class Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
